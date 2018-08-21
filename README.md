@@ -1,6 +1,6 @@
-# Feedly-Export-Save4Later
+# Feedly-Export-Save4Later (Chrome Bookmarks)
 
-Simple script that exports a users "Saved For Later" list or all loaded entries in a feed out of Feedly as a JSON string.   
+Simple script that exports a users "Saved For Later" list or all loaded entries in a feed out of Feedly as Chrome Bookmarks.   
 This was intended for use in the Google Chrome's "Inspector" tool so your mileage may vary if used in other contexts.  
 
 Format of JSON is as follows:  
@@ -23,7 +23,6 @@ time: "Sunday "
 
 # Scripts
 "Save Saved Entries": use for "Saved For Later"  
-"Save All Entries": use for any other page  
 
 
 NOTE: You must switch off SSL (http rather than https) or jQuery won't load!  
