@@ -3,16 +3,6 @@
 Simple script that exports a users "Saved For Later" list or all loaded entries in a feed out of Feedly as Chrome Bookmarks.   
 This was intended for use in the Google Chrome's "Inspector" tool so your mileage may vary if used in other contexts.  
 
-Format of JSON is as follows:  
-[  
-{  
-title: "Title",  
-url: "www.example.com/title",  
-summary: "Short summary",  
-time: "Sunday "  
-}  
-]  
-
 # How to use:
 1) Open up Google Chrome
 2) Login to Feedly and go to the "Saved For Later" list or any other feedpage.
