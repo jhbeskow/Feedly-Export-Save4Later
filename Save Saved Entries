@@ -15,22 +15,19 @@ function loadSaveAs() {
 }
 
 function saveToFile() {
-    // Loop through the DOM, grabbing the information from each bookmark
+	var html = '<!DOCTYPE NETSCAPE-Bookmark-file-1><!-- This is an automatically generated file.  It will be read and overwritten.  DO NOT EDIT! --><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"><TITLE>Bookmarks</TITLE><H1>Bookmarks</H1><DL><p><DT><H3 ADD_DATE="' + (new Date()).getTime() + '" LAST_MODIFIED="' + (new Date()).getTime() + '">Feedly</H3></DT><DL><p>';
+    // Loop through the DOM, grabbing the information from each bookmark	
     map = jQuery(".entry.quicklisted").map(function (i, el) {
         var $el = jQuery(el);
         var regex = /Published:(.*)(.*)/i;
-        return {
-            title: $el.attr("data-title"),
-            url: $el.attr("data-alternate-link"),
-            summary: $el.find(".summary")[0].innerHTML,
-            time: regex.exec($el.find("span.ago").attr("title"))[1]
-        };
+        return '<DT><A HREF="' + $el.attr("data-alternate-link") + '" ADD_DATE="' + (new Date(regex.exec($el.find("span.ago").attr("title"))[1])).getTime() + '">'+$el.attr("data-title") + '</A></DT>';
     }).get(); // Convert jQuery object into an array
 
-    // Convert to a nicely indented JSON string
-    json = JSON.stringify(map, undefined, 2);
-    var blob = new Blob([json], { type: "text/plain;charset=utf-8" });
-    saveAs(blob, "FeedlySavedForLater" + Date.now().toString() + ".txt");
+	html = html + map.join('\r\n') + '</p><DL></p></DL>';
+	
+	
+    var blob = new Blob([html], { type: "text/plain;charset=utf-8" });
+    saveAs(blob, "FeedlySavedForLater" + Date.now().toString() + ".html");
 }
 
 loadJQuery()
